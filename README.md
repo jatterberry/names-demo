@@ -17,4 +17,4 @@ Maven will be required to build the solution. The Maven goal spring-boot:run is 
 - A database named ‘people’ will be created on MongoDB with a collection called ‘names’.
 - Initially, no names will be shown. The names will appear as you add them.
 - First and Last name are required
-- To get the full list of names after a Search, just hit Search again making sure the search field is empty.
+- To get the full list of names after a Search, just hit Refresh, which should clear the search box, then Search again.
