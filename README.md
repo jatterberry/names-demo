@@ -7,9 +7,12 @@ This small application creates and maintains a database of names. It is not a fu
 - MongoDB
 - Gender-api
 
-Java 1.8 JDK and at least the Community Edition of MongoDB need to be installed.
+This solution used https://github.com/suresk/tutorials4geeks-spring-mongodb example as a template.
 
-- The application can be run via the command ‘java –jar namesApp.jar’ once it is built
+Java 1.8 JDK and at least the Community Edition of MongoDB need to be installed.
+Maven will be required to build the solution. The Maven goal spring-boot:run is used via the command line.
+
+- The application can be run via the command ‘java –jar {jarName}.jar’ once it is built
 - Make sure port 8080 is not already in use and in a browser enter ‘http://localhost:8080/home’
 - A database named ‘people’ will be created on MongoDB with a collection called ‘names’.
 - Initially, no names will be shown. The names will appear as you add them.
