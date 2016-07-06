@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<script type="text/javascript">
-
-function alphaNumericCheck(inText)
-{
-	var alphaNumber = /^[0-9a-zA-Z]+$/;
-	if( (inText.value.match(alphaNumber)) )
-		{
-			return true;
-		}
-	else
-		{
-			alert("Please use alphanumeric characters");
-			return false;
-		}
-}
-
-function clearText(textElement) {
-	$(textElement).value="";
-}
-
-</script>
-
     <head>
         <title>Name Demo</title>
         <style>
