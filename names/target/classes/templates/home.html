@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<script type="text/javascript">
+
+function alphaNumericCheck(inText)
+{
+	var alphaNumber = /^[0-9a-zA-Z]+$/;
+	if( (inText.value.match(alphaNumber)) )
+		{
+			return true;
+		}
+	else
+		{
+			alert("Please use alphanumeric characters");
+			return false;
+		}
+}
+
+function clearText(textElement) {
+	$(textElement).value="";
+}
+
+</script>
+
+    <head>
+        <title>Name Demo</title>
+        <style>
+            table, th, td {
+               border: 1px solid blue;
+               border-spacing: 0px;
+            }
+            th, td {
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="peopleForm" th:action="@{/refresh}" th:object="${personForm}" method="POST">
+         <div th:if="${not #lists.isEmpty(personForm.personList)}">
+         <h2>People</h2>
+          <table>
+            <thead>
+                <tr>
+                    <th>First</th>
+                    <th>Middle</th>
+                    <th>Last</th>
+                    <th>Gender</th>
+                    <th>Confidence</th>
+                    <th><img th:src="@{/images/trashCan.jpg}" height="30" width="30" /></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="person, rowStat : *{personList}">
+                	<input type="hidden" th:field="*{personList[__${rowStat.index}__].personId}" id="personId" name="personId" />
+                    <td><input type="text" th:field="*{personList[__${rowStat.index}__].firstName}" id="firstName" name="firstName" required="required" /></td>
+                    <td><input type="text" th:field="*{personList[__${rowStat.index}__].middleName}" id="middleName" name="middleName" /></td>
+                    <td><input type="text" th:field="*{personList[__${rowStat.index}__].lastName}" id="lastName" name="lastName" required="required" /></td>
+                    <td><input type="text" th:field="*{personList[__${rowStat.index}__].gender}" id="gender" name="gender" readonly="readonly" /></td>
+                    <td><input type="text" th:field="*{personList[__${rowStat.index}__].genderConfidence}" id="genderConfidence" name="genderConfidence" readonly="readonly" /></td>
+                    <td><input type="checkbox" th:field="*{personList[__${rowStat.index}__].deleteChecked}" id="deleteChecked" name="deleteChecked" /></td>
+                </tr>
+            </tbody>
+           </table>
+           </div>
+           <input type="submit" value="Refresh" />
+         </form>
+        <br />
+        
+        <h2>Add Person Name</h2>
+        <form action="/addPerson" name="addForm" method="POST">
+            First  <input type="text" id="firstName" name="firstName" required="required" /><br />
+            Middle <input type="text" id="middleName" name="middleName" /><br />
+            Last   <input type="text" id="lastName" name="lastName" required="required" /><br />
+            <input type="submit" />
+        </form>
+        
+        <h2>Search for names</h2>
+        <form action="/search" method="GET">
+            <input type="text" name="searchParams" id="searchParams" th:value="${searchParams}" />
+            <input type="submit" value="Search" />
+        </form>
+    </body>
+</html>
+ 
